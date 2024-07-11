@@ -1,0 +1,102 @@
+
+/* Le but de ce module est de decouvrir la norme de Coplien, et deux nouvelles notions:
+
+- Le constructeur de recopie : le constructeur de recopie est utilisé pour créer une nouvelle
+    instance  d'objet en copiant les valeurs d'un objet existant.
+
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    // Constructeur par défaut
+    Person() : name("John Doe"), age(30) {}
+
+    // Constructeur avec paramètres
+    Person(std::string n, int a) : name(n), age(a) {}
+
+    // Constructeur de recopie
+    Person(const Person &p) : name(p.name), age(p.age) {}
+
+    // Méthode pour afficher les détails de la personne
+    void display() {
+        std::cout << "Name: " << name << ", Age: " << age << std::endl;
+    }
+};
+
+int main() {
+    // Création d'une instance de Person
+    Person person1("Alice", 25);
+
+    // Utilisation du constructeur de copie pour créer une nouvelle instance
+    Person person2 = person1;
+
+    // Affichage des détails des deux personnes
+    std::cout << "Person 1: ";
+    person1.display();
+    std::cout << "Person 2: ";
+    person2.display();
+
+    return 0;
+}
+
+- L'operateur d'affectation : l'opérateur d'affectation est utilisé pour
+    attribuer les valeurs d'un objet à un autre objet existant.
+
+#include <iostream>
+#include <string>
+
+class Car {
+private:
+    std::string model;
+    std::string make;
+
+public:
+    // Constructeur par défaut
+    Car() : model("Camry"), make("Toyota") {}
+
+    // Constructeur avec paramètres
+    Car(std::string mdl, std::string mk) : model(mdl), make(mk) {}
+
+    // Surcharge de l'opérateur d'assignation
+    Car& operator=(const Car &c) {
+        model = c.model;
+        make = c.make;
+        return *this;
+    }
+
+    // Méthode pour afficher les détails de la voiture
+    void display() {
+        std::cout << "Make: " << make << ", Model: " << model << std::endl;
+    }
+};
+
+int main() {
+    // Création d'une instance de Car
+    Car car1("Accord", "Honda");
+
+    // Création d'une deuxième instance de Car
+    Car car2;
+
+    // Utilisation de l'opérateur d'assignation pour affecter car1 à car2
+    car2 = car1;
+
+    // Affichage des détails des deux voitures
+    std::cout << "Car 1: ";
+    car1.display();
+    std::cout << "Car 2: ";
+    car2.display();
+
+    return 0;
+}
+
+Autres notions :
+
+Representation des float en format IEEE-754 (4 octets):
+SEEEEEEEEMMMMMMMMMMMMMMMMMMMMM
+la formule utilisee est :
+(-1)^S * (1.M) * 2^(E - 127)
+
+
+*/

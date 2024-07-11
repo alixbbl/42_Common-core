@@ -1,0 +1,54 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    README                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alibourb <alibourb@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/14 14:29:42 by alibourb          #+#    #+#              #
+#    Updated: 2023/12/14 11:02:41 by alibourb         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+ATTENTION : la fonction replace() est ici interdite !
+
+En C++98, la bibliothèque <string> fournit un ensemble de fonctionnalités po
+ur
+manipuler des chaînes de caractères. Voici certaines des fonctions disponibles
+dans la bibliothèque <string> en C++98 :
+
+Fonctions de construction et de modification :
+
+string(), string(const char*) : Constructeurs pour initialiser les objets de
+chaînes de caractères.
+operator= : Opérateur pour affecter une chaîne de caractères à une autre.
+append(), insert(), erase(), replace(), substr(), c_str() : Fonctions pour
+la modification et la manipulation des chaînes de caractères.
+
+Fonctions d'accès et de recherche :
+
+operator[] : Opérateur d'accès pour les caractères individuels.
+at(), begin(), end(), rbegin(), rend() : Fonctions pour accéder aux caractères
+individuels et aux itérateurs de la chaîne de caractères.
+find(), rfind(), find_first_of(), find_last_of(), find_first_not_of(),
+find_last_not_of() : Fonctions de recherche pour rechercher des sous-chaînes
+ou des caractères spécifiques dans une chaîne de caractères.
+
+Fonctions d'information :
+
+length(), size(), empty(), max_size(), capacity() : Fonctions pour obtenir des
+informations sur la longueur, la taille et la capacité de la chaîne de
+caractères.
+resize(), shrink_to_fit() : Fonctions pour redimensionner et réduire la
+capacité de la chaîne de caractères.
+
+Fonctions de comparaison et de manipulation :
+
+compare(), substr() : Fonctions pour comparer et extraire des sous-chaînes
+de la chaîne de caractères.
+
+Ces fonctions de la bibliothèque <string> en C++98 offrent des fonctionnalités
+de base pour la manipulation de chaînes de caractères en C++. Il est important
+de noter que la bibliothèque standard C++ s'est considérablement améliorée
+depuis C++98, avec l'introduction de fonctionnalités plus puissantes et de
+ méthodes plus conviviales pour la manipulation de chaînes de caractères.

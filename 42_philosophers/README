@@ -1,0 +1,64 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    README                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alibourb <alibourb@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/10 10:35:03 by alibourb          #+#    #+#              #
+#    Updated: 2023/07/10 11:10:06 by alibourb         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Le projet Philosophers se base sur le probeme du diner de philosophes : assis
+autour d'une table, un nombre n de philosophes a acces a un nombre n de
+fourchettes. Chacun a droit d'utiliser une fourchette gauche et une fourchette
+droite. Une fois qu'un philosophe a mange a l'aide de ses deux fourchettes, il
+les repose, s'endort, puis "pense".
+
+Le but est de reussir a coordonner ces 3 actions : eat, sleep. think, sans
+qu'aucun des philosophes ne vienne a mourir. Cela se produit si le philosophe ne
+commence pas son repas dans les temps.
+Ce qui nous amene aux arguments du programme demande :
+Exemple :
+>./philosophers 4 800 200 200
+- philosophers : le a.out,
+- 4 : le nombre de philosophes et le nombre de fourchettes,
+- 800 : la duree maximale en millisecondes entre chaque repas,
+- 200 : la duree en ms d'un repas,
+- 200 : la duree en ms du sommeil du philosophe.
+Par consequent, la duree de "thinking" n'est pas imposee, elle sert de "soupape"
+a notre programme.
+Le sujet impose de ne pas depasser 200 philosophes, au-dela le risque de crash
+est trop important, meme si l'implementation est correcte.
+
+Les notions a connaitre :
+- Un "thread", c'est un processus, comme un petit programme. Chaque philo
+correspond a un thread, ils doivent tous s'attendre... (pthread_join());
+- Un "mutex" : on peut imaginer un mutex comme un barriere, ou un verrou. On le
+cree grace a une fonction deja existante (pthread_mutex_init()), puis, on le
+positionne avant et apres les portions de code ou les variables que l'on veut
+proteger... Et c'est la toute la difficulte du projet Philosophers !
+En effet, les threads disposent de leurs propres ressources, et sont independants
+en termes d'execution SAUF en ce qui concerne l'acces aux variables. Donc, lorsque
+j'incremente, par exemple, une variable de ma structure d'un cote, elle l'est pour
+tous les threads, ce qui n'est pas forcement souhaitable. Cette situation est
+appelee une data race. On va donc devoir placer les mutex aux bons endroits pour
+eviter ces data race ; utiliser Helgrind dans le terminal et gcc -fsanitize=thread
+dans le Makefile - attention cette option ralentit l'ordinateur.
+- Un "semaphore" : il s'agit d'un dispositif utilisant des mutex. En effet, un mutex
+est une forme simple de verrouillage, un semaphore utilise les mutex pour assurer
+la coordination des threads. Le concept peut etre developpe et implemente dans les
+bonus du projet.
+
+Finalise, le programme ne doit pas contenir de data race ou de leaks, sauf si evi-
+demment l'execution est arretee en pleine boucle infinie (exemple 2 800 200 200).
+
+Fonctions a utiliser :
+- usleep();
+- gettimeofday();
+- pthread_create();
+- pthread_join();
+- pthread_mutex_lock();
+- pthread_mutex_unlock();
+- pthread_mutex_destroy().
